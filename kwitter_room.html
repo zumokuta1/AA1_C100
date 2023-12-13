@@ -1,49 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Sala de Kwitter</title>
-<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
-
-<link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
-<link rel="stylesheet" type="text/css" href="style.css">
-
+    <title>Kwitter - Salas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="kwitter.css">
+    <link rel="stylesheet" type="text/css" href="kwitter_room.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "YOUR_API_KEY",
+          authDomain: "YOUR_AUTH_DOMAIN",
+          projectId: "YOUR_PROJECT_ID",
+          storageBucket: "YOUR_STORAGE_BUCKET",
+          messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+          appId: "YOUR_APP_ID"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+    </script>
 </head>
 <body>
-	<div class="container">
-		<!--4. agregar funcion para cerrar sesion  -->
-		<button id="logout" onclick="logout();" class="glyphicon glyphicon-log-out btn btn-danger">Cerrar sesión</button>
-		
-			<center>
-				<h1 class="header">
-					Kwitter
-					<sup>
-						<img src="m2.png">
-					</sup>
-				</h1>
-				<!--5. agregar el usuario para la bienvenida  -->
-				<h3 id="user_name" class="color_white"></h3>
-				
-				<div class="form-group input_div_room_page">
-					<label>#Agregar sala:</label>
-				<!--6. agregar campo de entrada para aceptar el nombre de la sala -->
-				<input type="text" id="room_name" class="form-control" placeholder="#Nombre de la sala">
-		
-				</div>
-				<!--7. agregar funcion para agregar a la sala  -->
-				<button onclick="addRoom();" class="btn btn-success">#Agregar sala</button>
-				<h3 class="color_white">#SALASDETENDENCIA</h3>
-				<!--8. agregar div con id output para contener todos los nombres de la sala  -->
-				<div id="output"></div>
-			</center>
-		</div>
-<script src="kwitter_room.js"></script>
+    <div class="container">
+        <button id="logout_button" class="btn btn-danger" onclick="logout()">Cerrar sesión</button>
+        <h4 id="user_display"></h4>
+        <div class="form-group">
+            <label for="room_name">Nombre de la sala:</label>
+            <input type="text" id="room_name" class="form-control" placeholder="Nombre de la sala">
+        </div>
+        <button id="addRoom_button" class="btn btn-success" onclick="addRoom()">Agregar Sala</button>
+        <br><br>
+        <h4>Salas:</h4>
+        <div id="room_list" class="room-list"></div>
+    </div>
+    <script src="kwitter_room.js"></script>
 </body>
 </html>
